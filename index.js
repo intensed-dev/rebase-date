@@ -68,7 +68,7 @@ function parseExpression(expression, defaultFormat) {
     return { value: new Date(), format: defaultFormat };
   }
 
-  const match = input.match(/^(.*?)\\s+as\\s+(.+)$/i);
+  const match = input.match(/^(.*?)\s+as\s+(.+)$/i);
   if (match) {
     return { value: parseValue(match[1].trim()), format: stripQuotes(match[2].trim()) };
   }
@@ -81,7 +81,7 @@ function parseValue(value) {
   if (!clean || clean.toLowerCase() === "now") return new Date();
 
   const timestamp = Number(clean);
-  if (/^-?\\d+$/.test(clean) && Number.isFinite(timestamp)) {
+  if (/^-?\d+$/.test(clean) && Number.isFinite(timestamp)) {
     return new Date(timestamp);
   }
 
